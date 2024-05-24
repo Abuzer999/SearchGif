@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: #e9e9e9;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato";
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  line-height: 1.5;
+  min-width: 320px;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+}
+
+input {
+  outline: none;
+  background: none;
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+::-moz-selection {
+  background: rgb(82, 82, 82);
+  color: #1e6f9f;
+}
+
+::selection {
+  background: rgb(82, 82, 82);
+  color: #1e6f9f;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1130px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.search {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.search input {
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+.search__loup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px clamp(0.625rem, 0.378rem + 1.23vw, 1.25rem);
+  border-radius: 20px;
+  background-color: #4CAF50;
+  color: white;
+}
+.search__loup span {
+  font-size: clamp(1rem, 0.901rem + 0.49vw, 1.25rem);
+}
+.search__loup svg {
+  width: 40px;
+  fill: white;
+}
+
+.gifs {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 100px 0;
+}
+.gifs__gif img {
+  width: 300px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.nothing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nothing p {
+  text-align: center;
+  font-size: clamp(1.25rem, 1.127rem + 0.62vw, 1.563rem);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.show {
+  display: none;
+}/*# sourceMappingURL=style.css.map */
