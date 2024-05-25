@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  background: #e9e9e9;
-}
-
 img {
   max-width: 100%;
 }
@@ -22,16 +16,12 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  background: #e9e9e9;
   font-family: "Lato";
   min-height: 100vh;
   scroll-behavior: smooth;
   line-height: 1.5;
   min-width: 320px;
-}
-
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0;
 }
 
 button {
