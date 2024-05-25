@@ -118,12 +118,13 @@ p {
      object-fit: cover;
 }
 .gifs__skeleton {
-  background-color: gray;
-  background: linear-gradient(90deg, #e0e0e0 0%, #f0f0f0 50%, #e0e0e0 100%);
-  background-size: 200% 100%;
+  width: 300px;
+  height: 200px;
+  background-image: linear-gradient(90deg, #d1d1d1 0px, #dbdbdb 40px, #d1d1d1 80px);
+  background-size: 600px;
   overflow: hidden;
   position: relative;
-  animation: gradient-animation 1.5s infinite;
+  animation: gradient-animation 1.5s infinite linear;
 }
 
 .nothing {
@@ -208,13 +209,10 @@ p {
 }
 @keyframes gradient-animation {
   0% {
-    background-position: 0% 50%;
+    background-position: -100px;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
+  40%, 100% {
+    background-position: 300px;
   }
 }
 .show {
