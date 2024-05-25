@@ -64,10 +64,12 @@
   }
 
   &__skeleton {
-    width: 300px;
-    height: 200px;
     background-color: gray;
-    animation: blink 1s infinite;
+    background: linear-gradient(90deg, #e0e0e0 0%, #f0f0f0 50%, #e0e0e0 100%);
+    background-size: 200% 100%;
+    overflow: hidden;
+    position: relative;
+    animation: gradient-animation 1.5s infinite;
   }
 }
 
@@ -152,15 +154,15 @@
   }
 }
 
-@keyframes blink {
+@keyframes gradient-animation {
   0% {
-    opacity: 0.5;
+    background-position: 0% 50%;
   }
   50% {
-    opacity: 1;
+    background-position: 100% 50%;
   }
   100% {
-    opacity: 0.5;
+    background-position: 200% 50%;
   }
 }
 

@@ -16,7 +16,7 @@ const getGif = async (value, offset) => {
   const cachedTime = localStorage.getItem(`${cacheKey}_time`);
 
   // Проверяем, есть ли кэшированные данные и не истекло ли время их жизни
-  if (cachedData && cachedTime && (Date.now() - cachedTime < time)) {
+  if (cachedData && cachedTime && Date.now() - cachedTime < time) {
     const allGifs = JSON.parse(cachedData);
     gifsHTML(allGifs.data);
     empty(allGifs.data);
@@ -25,7 +25,7 @@ const getGif = async (value, offset) => {
   }
 
   try {
-    const response = await axios.get(`https://api.giphy.com/v1/gifs/search`, {
+    const response = await axios.get('https://api.giphy.com/v1/gifs/search', {
       params: {
         api_key: apiKey,
         q: value,
@@ -50,9 +50,11 @@ const gifsHTML = (gifsData) => {
   gifsData.forEach((gif) => {
     const gifTile = document.createElement("div");
     gifTile.classList.add("gifs__gif");
+    gifTile.classList.add("gifs__skeleton");
     const img = document.createElement("img");
     img.src = gif.images.downsized.url;
     img.alt = gif.title;
+    img.onload = () => gifTile.classList.remove("gifs__skeleton");
     gifTile.appendChild(img);
     gifs.appendChild(gifTile);
   });
