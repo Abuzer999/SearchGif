@@ -88,6 +88,7 @@ form.addEventListener("submit", (event) => {
   const inp = input.value;
   if (!input.value || input.value.trim() === "") return;
   loader.classList.remove("show");
+  loaderTwo.classList.add("show");
   nothing.classList.add("show");
   gifs.innerHTML = "";
   offset = 0;
