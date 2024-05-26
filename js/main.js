@@ -8,7 +8,7 @@ const loaderTwo = document.querySelector(".loader-two");
 const apiKey = "2Md5eJxVOJ8OSv5usKa02rdgZmTWzxlL";
 let offset = 0;
 let isLoading = false;
-const time = 30 * 60 * 1000;
+const cacheDuration = 30 * 60 * 1000;
 
 const getGif = async (value, offset) => {
   const cacheKey = `${value}_${offset}`;
@@ -16,7 +16,7 @@ const getGif = async (value, offset) => {
   const cachedTime = localStorage.getItem(`${cacheKey}_time`);
 
   // Проверяем, есть ли кэшированные данные и не истекло ли время их жизни
-  if (cachedData && cachedTime && Date.now() - cachedTime < time) {
+  if (cachedData && cachedTime && Date.now() - parseInt(cachedTime) < cacheDuration) {
     const allGifs = JSON.parse(cachedData);
     gifsHTML(allGifs.data);
     empty(allGifs.data);
@@ -38,9 +38,12 @@ const getGif = async (value, offset) => {
     empty(allGifs.data);
     console.log(allGifs.data);
 
+    // Проверяем и очищаем старые данные
+    clearOldStorage();
+
     // Сохраняем данные и время их кэширования
     localStorage.setItem(cacheKey, JSON.stringify(allGifs));
-    localStorage.setItem(`${cacheKey}_time`, Date.now());
+    localStorage.setItem(`${cacheKey}_time`, Date.now().toString());
   } catch (err) {
     console.warn(err, "err");
   }
@@ -67,6 +70,24 @@ const empty = (dataEmpty) => {
     nothing.classList.add("show");
   }
 };
+
+const clearOldStorage = () => {
+  const now = Date.now();
+  const keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key.endsWith('_time')) {
+      const cachedTime = parseInt(localStorage.getItem(key));
+      if (now - cachedTime >= cacheDuration) {
+        const mainKey = key.replace('_time', '');
+        localStorage.removeItem(mainKey);
+        localStorage.removeItem(key);
+      }
+    }
+  });
+};
+
+// Вызываем очистку старых данных при загрузке страницы
+clearOldStorage();
 
 window.addEventListener("scroll", () => {
   if (isLoading) return;
